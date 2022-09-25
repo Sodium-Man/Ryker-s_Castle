@@ -31,14 +31,14 @@ public class Player extends Entity{
 		
 		try {
 			
-			up1=ImageIO.read(getClass().getResourceAsStream("/player/tile_0085.png"));
-			up2=ImageIO.read(getClass().getResourceAsStream("/player/tile_0085.png"));
-			down1=ImageIO.read(getClass().getResourceAsStream("/player/tile_0085.png"));
-			down2=ImageIO.read(getClass().getResourceAsStream("/player/tile_0085.png"));
-			left1=ImageIO.read(getClass().getResourceAsStream("/player/tile_0085.png"));
-			left2=ImageIO.read(getClass().getResourceAsStream("/player/tile_0085.png"));
-			right1=ImageIO.read(getClass().getResourceAsStream("/player/tile_0085.png"));
-			right2=ImageIO.read(getClass().getResourceAsStream("/player/tile_0085.png"));
+			up1=ImageIO.read(getClass().getResourceAsStream("/player/sprite_04.png"));
+			up2=ImageIO.read(getClass().getResourceAsStream("/player/sprite_05.png"));
+			down1=ImageIO.read(getClass().getResourceAsStream("/player/sprite_01.png"));
+			down2=ImageIO.read(getClass().getResourceAsStream("/player/sprite_02.png"));
+			left1=ImageIO.read(getClass().getResourceAsStream("/player/sprite_07.png"));
+			left2=ImageIO.read(getClass().getResourceAsStream("/player/sprite_08.png"));
+			right1=ImageIO.read(getClass().getResourceAsStream("/player/sprite_10.png"));
+			right2=ImageIO.read(getClass().getResourceAsStream("/player/sprite_11.png"));
 			
 		}catch(IOException e) {
 			e.printStackTrace();
