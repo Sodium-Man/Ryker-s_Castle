@@ -8,7 +8,7 @@ public class OBJ_RKey extends SuperObject {
 	
 	public OBJ_RKey() {
 		
-		name = "key";
+		name = "Rkey";
 		try {
 			image =ImageIO.read(getClass().getResourceAsStream("/objects/ryker_key.png"));
 		}catch(IOException e) {
