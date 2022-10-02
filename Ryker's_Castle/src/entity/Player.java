@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.UtilityTool;
 
 public class Player extends Entity{
 	
@@ -47,22 +48,33 @@ public class Player extends Entity{
 	}
 	public void getPlayerImage() {
 		
-		try {
+		
+	up1 = setup("sprite_04");
+	up2 = setup("sprite_05");
+	down1 = setup("sprite_01");
+	down2 = setup("sprite_02");
+	left1 = setup("sprite_07");
+	left2 = setup("sprite_08");
+	right1 = setup("sprite_10");
+	right2 = setup("sprite_11");
+	
 			
-			up1=ImageIO.read(getClass().getResourceAsStream("/player/sprite_04.png"));
-			up2=ImageIO.read(getClass().getResourceAsStream("/player/sprite_05.png"));
-			down1=ImageIO.read(getClass().getResourceAsStream("/player/sprite_01.png"));
-			down2=ImageIO.read(getClass().getResourceAsStream("/player/sprite_02.png"));
-			left1=ImageIO.read(getClass().getResourceAsStream("/player/sprite_07.png"));
-			left2=ImageIO.read(getClass().getResourceAsStream("/player/sprite_08.png"));
-			right1=ImageIO.read(getClass().getResourceAsStream("/player/sprite_10.png"));
-			right2=ImageIO.read(getClass().getResourceAsStream("/player/sprite_11.png"));
+	}
+	public BufferedImage setup(String imageName) {
+		
+		UtilityTool uTool = new UtilityTool();
+		BufferedImage image = null;
+		
+		try {
+			image = ImageIO.read(getClass().getResourceAsStream("/player/"+imageName + ".png"));
+			image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 			
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-			
+		return image;
 	}
+	
 	public void update(){
 		
 		if(keyH.upPressed==true||keyH.downPressed==true
@@ -189,6 +201,6 @@ public class Player extends Entity{
 			}
 			break;	
 		}
-		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize,null);
+		g2.drawImage(image, screenX, screenY, null);
 	}
 }

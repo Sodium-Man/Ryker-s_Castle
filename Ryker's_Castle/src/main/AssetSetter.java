@@ -14,19 +14,19 @@ public class AssetSetter {
 
 	public void setObject() {
 		
-		gp.obj[0] = new OBJ_RKey();
+		gp.obj[0] = new OBJ_RKey(gp);
 		gp.obj[0].worldX = 17*gp.tileSize;
 		gp.obj[0].worldY = 6*gp.tileSize;
 		
-		gp.obj[1] = new OBJ_door();
+		gp.obj[1] = new OBJ_door(gp);
 		gp.obj[1].worldX = 14*gp.tileSize;
 		gp.obj[1].worldY = 8*gp.tileSize;
 		
-		gp.obj[2] = new OBJ_Chest();
+		gp.obj[2] = new OBJ_Chest(gp);
 		gp.obj[2].worldX = 13*gp.tileSize;
 		gp.obj[2].worldY = 11*gp.tileSize;
 		
-		gp.obj[3] = new OBJ_SpeedPotion();
+		gp.obj[3] = new OBJ_SpeedPotion(gp);
 		gp.obj[3].worldX = 7*gp.tileSize;
 		gp.obj[3].worldY = 8*gp.tileSize;
 	}

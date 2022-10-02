@@ -4,13 +4,21 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import main.GamePanel;
+
 public class OBJ_RKey extends SuperObject {
 	
-	public OBJ_RKey() {
+	GamePanel gp;
+	
+	public OBJ_RKey(GamePanel gp) {
+		
+		this.gp = gp;
 		
 		name = "Rkey";
 		try {
 			image =ImageIO.read(getClass().getResourceAsStream("/objects/ryker_key.png"));
+			uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+			
 		}catch(IOException e) {
 			e.printStackTrace();
 		}

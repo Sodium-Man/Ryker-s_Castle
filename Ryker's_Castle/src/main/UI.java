@@ -27,7 +27,7 @@ public class UI {
 		
 		arial_30 = new Font("Arial",Font.PLAIN,30);
 		arial_70B = new Font("Arial",Font.BOLD,70);
-		OBJ_RKey key = new OBJ_RKey();
+		OBJ_RKey key = new OBJ_RKey(gp);
 		keyImage = key.image;
 	}
 	public void showMessage(String text) {
