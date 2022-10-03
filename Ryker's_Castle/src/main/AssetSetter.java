@@ -1,5 +1,6 @@
 package main;
 
+import entity.NPC_Ryker;
 import object.OBJ_Chest;
 import object.OBJ_RKey;
 import object.OBJ_SpeedPotion;
@@ -15,5 +16,11 @@ public class AssetSetter {
 	public void setObject() {
 		
 		
+	}
+	public void setNPC() {
+		
+		gp.npc[0] = new NPC_Ryker(gp);
+		gp.npc[0].worldX =gp.tileSize*7;
+		gp.npc[0].worldY = gp.tileSize*8;
 	}
 }
