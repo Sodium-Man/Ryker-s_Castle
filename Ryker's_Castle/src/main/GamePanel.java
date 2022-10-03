@@ -26,17 +26,20 @@ public class GamePanel extends JPanel implements Runnable{
 	//world settings
 	public final int maxWorldCol = 50;
 	public final int maxWorldRow = 50;
-	public final int worldWidth = tileSize*maxWorldCol;
-	public final int worldHeight = tileSize*maxWorldRow;
+
 	
 	//FPS
 	int FPS=60;
 	
 	TileManager tileM =new TileManager(this);
 	KeyHandler keyH=new KeyHandler();
-	Thread gameThread;
+	Sound music = new Sound();
+	Sound se = new Sound();
 	public CollisionChecker cChecker = new CollisionChecker(this);
 	public AssetSetter aSetter = new AssetSetter(this);
+	public UI ui = new UI(this);
+	Thread gameThread;
+	
 	public Player player=new Player(this,keyH);
 	public SuperObject obj[] = new SuperObject[10];
 	
@@ -52,6 +55,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public void setupGame() {
 		
 		aSetter.setObject();
+		playMusic(0);
 		
 	}
 	
@@ -92,8 +96,15 @@ public class GamePanel extends JPanel implements Runnable{
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
-		
 		Graphics2D g2=(Graphics2D)g;
+		
+		//debug
+		long drawStart = 0;
+		if(keyH.checkDrawTime == true) {
+			drawStart = System.nanoTime();
+		}
+		
+		
 		//Tile
 		tileM.draw(g2);
 		
@@ -107,8 +118,38 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		//Player
 		player.draw(g2);
-	
+		
+		//UI
+		ui.draw(g2);
+		
+		//debug
+		if(keyH.checkDrawTime == true) {
+			long drawEnd = System.nanoTime();
+			long passed =drawEnd - drawStart;
+			g2.setColor(Color.white);
+			g2.drawString("drawTime:"+passed, 10, 400);
+			System.out.println("drawTime:"+passed);
+		}
+		
 		g2.dispose();
+	}
+	public void playMusic(int i) {
+		
+		music.setFile(i);
+		music.play();
+		music.loop();
+		
+	}
+	public void stopMusic() {
+		
+		music.stop();
+		
+	}
+	public void playSE(int i) {
+		
+		se.setFile(i);
+		se.play();
+		
 	}
 
 }
