@@ -22,6 +22,7 @@ public class UI {
 	int messageCounter = 0;
 	public boolean gameFinished = false;
 	public String currentDialogue = "";
+	public int commandNum = 0;
 	
 	
 	public UI(GamePanel gp) {
@@ -50,6 +51,9 @@ public class UI {
 		g2.setFont(purisaB);
 		g2.setColor(Color.white);
 		
+		if(gp.gameState == gp.titleState) {
+			drawTitleScreen();
+		}
 		if(gp.gameState == gp.playState) {
 			
 		}
@@ -61,11 +65,58 @@ public class UI {
 		}
 		
 	}
+	public void drawTitleScreen() {
+		
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,80F));
+		String text = "Ryker's Castle";
+		int x = getXforCenteredText(text);
+		int y = gp.tileSize*3;
+		
+		//shadow
+		g2.setColor(Color.gray);
+		g2.drawString(text, x+5, y+5);
+		
+		//main title		
+		g2.setColor(Color.white);
+		g2.drawString(text, x, y);
+		
+		//character
+		x = gp.screenWidth/2 - gp.tileSize;
+		y += gp.tileSize*2;
+		g2.drawImage(gp.player.idle, x, y, gp.tileSize*2, gp.tileSize*2,null);
+		
+		//Menu
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
+		
+		text ="New Game";
+		x = getXforCenteredText(text);
+		y += gp.tileSize*3;
+		g2.drawString(text, x, y);
+		if(commandNum == 0) {
+			g2.drawString(">", x-gp.tileSize, y);
+		}
+		
+		text ="Load Game";
+		x = getXforCenteredText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y);
+		if(commandNum == 1) {
+			g2.drawString(">", x-gp.tileSize, y);
+		}
+		
+		text ="Quit";
+		x = getXforCenteredText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y);
+		if(commandNum == 2) {
+			g2.drawString(">", x-gp.tileSize, y);
+		}
+	}
 	public void drawPauseScreen() {
 		
-		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80F));
+		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,60F));
 		String text ="Paused";
-		int x=getXforCenteredText(text);
+		int x = getXforCenteredText(text);
 		int y = gp.screenHeight/2;
 		
 		g2.drawString(text, x, y);

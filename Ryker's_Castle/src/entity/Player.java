@@ -47,7 +47,7 @@ public class Player extends Entity{
 	}
 	public void getPlayerImage() {
 		
-		
+	idle = setup("/player/tile_0085");	
 	up1 = setup("/player/sprite_04");
 	up2 = setup("/player/sprite_05");
 	down1 = setup("/player/sprite_01");
