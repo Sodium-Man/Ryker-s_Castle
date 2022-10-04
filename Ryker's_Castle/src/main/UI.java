@@ -3,8 +3,11 @@ package main;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 
 import object.OBJ_RKey;
@@ -13,7 +16,7 @@ public class UI {
 	
 	GamePanel gp;
 	Graphics2D g2;
-	Font arial_30, arial_70B;
+	Font purisaB;
 	public boolean messageOn = false;
 	public String message = "";
 	int messageCounter = 0;
@@ -24,8 +27,15 @@ public class UI {
 	public UI(GamePanel gp) {
 		this.gp = gp;
 		
-		arial_30 = new Font("Arial",Font.PLAIN,30);
-		arial_70B = new Font("Arial",Font.BOLD,70);
+		
+		try {
+			InputStream is = getClass().getResourceAsStream("/font/Purisa Bold.ttf");
+			purisaB = Font.createFont(Font.TRUETYPE_FONT, is);
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public void showMessage(String text) {
 		
@@ -37,7 +47,7 @@ public class UI {
 		
 		this.g2 = g2;
 		
-		g2.setFont(arial_30);
+		g2.setFont(purisaB);
 		g2.setColor(Color.white);
 		
 		if(gp.gameState == gp.playState) {
@@ -71,6 +81,7 @@ public class UI {
 		x += gp.tileSize;
 		y += gp.tileSize;
 		
+		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,25F));
 		for(String line: currentDialogue.split("\n")) {
 			g2.drawString(line, x, y);
 			y += 40;
