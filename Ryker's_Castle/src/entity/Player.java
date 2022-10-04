@@ -122,8 +122,14 @@ public class Player extends Entity{
 		
 		if(i !=999) {
 			
-			System.out.println("you are hitting an npc!");
+			if(gp.keyH.enterPressed == true) {
+				
+				gp.gameState = gp.dialougeState;
+				gp.npc[i].speak();
+				
+			}
 		}
+		gp.keyH.enterPressed = false;
 	}
 	
 	public void draw(Graphics2D g2) {

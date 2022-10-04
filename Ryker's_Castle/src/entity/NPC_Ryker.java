@@ -15,6 +15,7 @@ public class NPC_Ryker extends Entity{
 		speed = 3;
 		
 		getImage();
+		setDialogue();
 	}
 	public void getImage() {
 		
@@ -30,6 +31,13 @@ public class NPC_Ryker extends Entity{
 		
 				
 		}
+	public void setDialogue() {
+		
+		dialogues[0] = "Hello, player";
+		dialogues[1] = "I am Ryker i own this island ";
+		dialogues[2] = "And its people too..";
+		dialogues[3] = "HAHAHA!";
+	}
 	public void setAction() {
 		
 		actionLockCounter++;
@@ -57,6 +65,9 @@ public class NPC_Ryker extends Entity{
 			
 		}
 		
+	}
+	public void speak() {
+		super.speak();
 	}
 
 }
