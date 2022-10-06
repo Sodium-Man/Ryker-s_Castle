@@ -14,6 +14,13 @@ public class NPC_Ryker extends Entity{
 		direction = "down";
 		speed = 3;
 		
+		solidArea.x = 0;
+		solidArea.y = 16;
+		solidArea.width = 48;
+		solidArea.height = 32;
+		solidAreaDefaultX = solidArea.x;
+		solidAreaDefaultY = solidArea.y;
+		
 		getImage();
 		setDialogue();
 	}
