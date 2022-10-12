@@ -69,5 +69,10 @@ actionLockCounter++;
 		}
 		
 	}
+	public void damageReaction() {
+		
+		actionLockCounter = 0;
+		direction = gp.player.direction;
+	}
 
 }
