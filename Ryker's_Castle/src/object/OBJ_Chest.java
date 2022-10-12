@@ -11,7 +11,7 @@ public OBJ_Chest(GamePanel gp) {
 	super(gp);
 	
 		name = "chest";
-		down1 = setup("/objects/chest");
+		down1 = setup("/objects/chest",gp.tileSize,gp.tileSize);
 		collision = true;
 	}
 

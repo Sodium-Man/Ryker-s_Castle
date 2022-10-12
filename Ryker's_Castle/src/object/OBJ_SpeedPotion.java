@@ -11,7 +11,7 @@ public OBJ_SpeedPotion(GamePanel gp) {
 	super(gp);
 		
 		name = "sPotion";
-		down1 = setup("/objects/speed_potion");
+		down1 = setup("/objects/speed_potion",gp.tileSize,gp.tileSize);
 	}
 
 
