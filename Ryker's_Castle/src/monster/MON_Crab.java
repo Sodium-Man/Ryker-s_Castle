@@ -19,6 +19,9 @@ public class MON_Crab extends Entity{
 		speed = 2;
 		maxLife = 4;
 		life = maxLife;
+		attack = 4;
+		defense = 0;
+		exp = 2;
 		
 		solidArea.x = 8;
 		solidArea.y = 16;

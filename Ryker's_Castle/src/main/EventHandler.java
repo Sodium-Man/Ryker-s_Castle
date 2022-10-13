@@ -104,6 +104,7 @@ public class EventHandler {
 			gp.gameState = gameState;
 			gp.ui.currentDialogue = "You recovered your health!";
 			gp.player.life =gp.player.maxLife;
+			gp.aSetter.setMonster();
 		}
 	}
 

@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import entity.Entity;
 import object.OBJ_Heart;
@@ -21,8 +22,8 @@ public class UI {
 	Font purisaB;
 	BufferedImage heart_full,heart_half,heart_blank;
 	public boolean messageOn = false;
-	public String message = "";
-	int messageCounter = 0;
+	ArrayList<String> message = new ArrayList<>();
+	ArrayList<Integer> messageCounter = new ArrayList<>();
 	public boolean gameFinished = false;
 	public String currentDialogue = "";
 	public int commandNum = 0;
@@ -46,11 +47,10 @@ public class UI {
 		heart_half = heart.image2;
 		heart_blank = heart.image3;
 	}
-	public void showMessage(String text) {
+	public void addMessage(String text) {
 		
-		message = text;
-		messageOn = true;
-		
+		message.add(text);
+		messageCounter.add(0);
 	}
 	public void draw(Graphics2D g2) {
 		
@@ -64,6 +64,7 @@ public class UI {
 		}
 		if(gp.gameState == gp.playState) {
 			drawPlayerLife();
+			drawMessage();
 		}
 		if(gp.gameState == gp.pauseState) {
 			drawPlayerLife();
@@ -75,6 +76,33 @@ public class UI {
 		}
 		if(gp.gameState == gp.characterState) {
 			drawCharacterScreen();
+		}
+	}
+	public void drawMessage() {
+		
+		int messageX = gp.tileSize;
+		int messageY = gp.tileSize*4;
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 25F));
+		
+		for(int i = 0; i < message.size(); i++) {
+			
+			if(message.get(i) != null) {
+				
+				g2.setColor(Color.black);
+				g2.drawString(message.get(i),messageX+2, messageY+2);
+				
+				g2.setColor(Color.white);
+				g2.drawString(message.get(i),messageX, messageY);
+				
+				int counter = messageCounter.get(i) + 1;
+				messageCounter.set(i, counter);
+				messageY += 50;
+				
+				if(messageCounter.get(i) > 100) {
+					message.remove(i);
+					messageCounter.remove(i);
+				}
+			}
 		}
 	}
 	public void drawPlayerLife() {
