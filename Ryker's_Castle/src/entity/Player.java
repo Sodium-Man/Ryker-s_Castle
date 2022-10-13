@@ -5,12 +5,14 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
 import main.UtilityTool;
+import object.OBJ_RKey;
 import object.OBJ_shield_wood;
 import object.OBJ_sword_std;
 
@@ -21,6 +23,8 @@ public class Player extends Entity{
 	public final int screenX;
 	public final int screenY;
 	public boolean attackCanceled = false;
+	public ArrayList<Entity> inventory = new ArrayList<>();
+	public final int maxInventorySize = 20;
 	
 	public Player(GamePanel gp,KeyHandler keyH) {
 		
@@ -44,6 +48,7 @@ public class Player extends Entity{
 		setDefaultValue();
 		getPlayerImage();
 		getPlayerAttackImage();
+		setItems();
 	}
 	public void setDefaultValue() {
 		worldX=gp.tileSize*12;
@@ -64,6 +69,12 @@ public class Player extends Entity{
 		currentShield = new OBJ_shield_wood(gp);
 		attack = getAttack();
 		defense = getDefense();
+	}
+	public void setItems() {
+		
+		inventory.add(currentWeapon);
+		inventory.add(currentShield);
+		inventory.add(new OBJ_RKey(gp));
 	}
 	public int getAttack() {
 		return attack = strength * currentWeapon.attackValue;

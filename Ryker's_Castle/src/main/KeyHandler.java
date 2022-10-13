@@ -57,7 +57,8 @@ public class KeyHandler implements KeyListener{
 		if(code == KeyEvent.VK_ENTER) {
 			if(gp.ui.commandNum == 0) {
 				gp.gameState = gp.playState;
-				//gp.playMusic(0);  // add village music.
+				gp.stopMusic();
+				  // add village music.
 			}
 			if(gp.ui.commandNum == 1) {
 				// add later
@@ -118,6 +119,30 @@ public class KeyHandler implements KeyListener{
 		
 		if(code == KeyEvent.VK_B) {
 			gp.gameState = gp.playState;
+		}
+		if(code == KeyEvent.VK_W) {
+			if(gp.ui.slotRow !=0) {
+				gp.ui.slotRow--;
+				gp.playSE(9);
+			}
+		}
+		if(code == KeyEvent.VK_A) {
+			if(gp.ui.slotCol !=0) {
+				gp.ui.slotCol--;
+				gp.playSE(9);
+			}
+		}
+		if(code == KeyEvent.VK_S) {
+			if(gp.ui.slotRow !=3) {
+				gp.ui.slotRow++;
+				gp.playSE(9);
+			}
+		}
+		if(code == KeyEvent.VK_D) {
+			if(gp.ui.slotCol !=4) {
+				gp.ui.slotCol++;
+				gp.playSE(9);
+			}
 		}
 	}
 

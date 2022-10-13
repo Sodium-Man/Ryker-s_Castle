@@ -11,6 +11,8 @@ public class OBJ_shield_wood extends Entity{
 		name = "Wood shield";
 		down1 = setup("/objects/shield",gp.tileSize,gp.tileSize);
 		defenseValue = 1;
+		description = "[" + name + "]\n standard sheild";
+
 	}
 
 }
