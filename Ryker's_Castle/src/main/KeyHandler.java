@@ -144,6 +144,10 @@ public class KeyHandler implements KeyListener{
 				gp.playSE(9);
 			}
 		}
+		if(code == KeyEvent.VK_E) {
+			
+			gp.player.selectItem();
+		}
 	}
 
 	@Override

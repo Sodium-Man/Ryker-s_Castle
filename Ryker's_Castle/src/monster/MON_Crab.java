@@ -14,10 +14,10 @@ public class MON_Crab extends Entity{
 		
 		this.gp = gp;
 		
-		type =2;
+		type = type_monster;
 		name = "crab";
 		speed = 2;
-		maxLife = 4;
+		maxLife = 6;
 		life = maxLife;
 		attack = 4;
 		defense = 0;
