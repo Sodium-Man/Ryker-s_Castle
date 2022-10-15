@@ -6,15 +6,22 @@ import entity.Entity;
 import main.GamePanel;
 
 public class MON_Crab extends Entity{
+	
+	GamePanel gp;
 
 	public MON_Crab(GamePanel gp) {
 		super(gp);
 		
-		type =2;
+		this.gp = gp;
+		
+		type = type_monster;
 		name = "crab";
 		speed = 2;
-		maxLife = 4;
+		maxLife = 6;
 		life = maxLife;
+		attack = 4;
+		defense = 0;
+		exp = 2;
 		
 		solidArea.x = 8;
 		solidArea.y = 16;
@@ -28,14 +35,14 @@ public class MON_Crab extends Entity{
 	}
 	public void getImage() {
 		
-		up1 = setup("/monster/crab_up");
-		up2 = setup("/monster/crab_up");
-		down1 = setup("/monster/crab_down");
-		down2 = setup("/monster/crab_down");
-		left1 = setup("/monster/crab_left");
-		left2 = setup("/monster/crab_left");
-		right1 = setup("/monster/crab_right");
-		right2 = setup("/monster/crab_right");
+		up1 = setup("/monster/crab_up",gp.tileSize,gp.tileSize);
+		up2 = setup("/monster/crab_up",gp.tileSize,gp.tileSize);
+		down1 = setup("/monster/crab_down",gp.tileSize,gp.tileSize);
+		down2 = setup("/monster/crab_down",gp.tileSize,gp.tileSize);
+		left1 = setup("/monster/crab_left",gp.tileSize,gp.tileSize);
+		left2 = setup("/monster/crab_left",gp.tileSize,gp.tileSize);
+		right1 = setup("/monster/crab_right",gp.tileSize,gp.tileSize);
+		right2 = setup("/monster/crab_right",gp.tileSize,gp.tileSize);
 	}
 	public void setAction() {
 		
@@ -64,6 +71,11 @@ actionLockCounter++;
 			
 		}
 		
+	}
+	public void damageReaction() {
+		
+		actionLockCounter = 0;
+		direction = gp.player.direction;
 	}
 
 }

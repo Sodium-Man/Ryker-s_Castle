@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int playState = 1;
 	public final int pauseState = 2;
 	public final int dialougeState = 3;
-	
+	public final int characterState = 4;
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -119,7 +119,12 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 			for(int i=0; i < monster.length; i++) {
 				if(monster[i] != null) {
-					monster[i].update();
+					if(monster[i].alive == true && monster[i].dying == false) {
+						monster[i].update();
+					}
+					if(monster[i].alive == false) {
+						monster[i] = null;
+					}
 				}
 			}
 		}
