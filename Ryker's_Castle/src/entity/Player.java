@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.KeyHandler;
 import main.UtilityTool;
+import object.OBJ_Fireball;
 import object.OBJ_RKey;
 import object.OBJ_shield_wood;
 import object.OBJ_sword_std;
@@ -64,6 +65,7 @@ public class Player extends Entity{
 		coin = 0;
 		currentWeapon = new OBJ_sword_std(gp);
 		currentShield = new OBJ_shield_wood(gp);
+		projectile = new OBJ_Fireball(gp);
 		attack = getAttack();
 		defense = getDefense();
 	}
@@ -189,12 +191,29 @@ public class Player extends Entity{
 			spriteCounter=0;
 		}
 	}
+		if(gp.keyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30) {
+			
+			//set default coordintates, direction and user
+			projectile.set(worldX, worldY, direction, true, this);
+			
+			//ADD it to the list
+			gp.projectileList.add(projectile);
+			
+			shotAvailableCounter = 0;
+			
+			gp.playSE(10);
+
+		}
+		
 		if(invincible == true) {
 			invincibleCounter++;
 			if(invincibleCounter > 60) {
 				invincible =false;
 				invincibleCounter = 0;
 			}
+		}
+		if(shotAvailableCounter < 30) {
+			shotAvailableCounter++;
 		}
 		
 }
@@ -224,7 +243,7 @@ public class Player extends Entity{
 			solidArea.height = attackArea.height;
 			
 			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
-			damageMonster(monsterIndex);
+			damageMonster(monsterIndex,attack);
 			
 			worldX = currentWorldX;
 			worldY = currentWorldY;
@@ -271,7 +290,7 @@ public class Player extends Entity{
 	}
 	public void contactMonster(int i) {
 		if(i != 999) {
-			if(invincible == false) {
+			if(invincible == false && gp.monster[i].dying == false) {
 				gp.playSE(6);
 				
 				int damage = gp.monster[i].attack - defense;
@@ -283,7 +302,7 @@ public class Player extends Entity{
 			}
 		}
 	}
-	public void damageMonster(int i) {
+	public void damageMonster(int i,int attack) {
 		
 		if(i != 999) {
 			
