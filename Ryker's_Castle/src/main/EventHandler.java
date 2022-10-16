@@ -102,8 +102,9 @@ public class EventHandler {
 			gp.player.attackCanceled = true;
 			gp.playSE(2);
 			gp.gameState = gameState;
-			gp.ui.currentDialogue = "You recovered your health!";
-			gp.player.life =gp.player.maxLife;
+			gp.ui.currentDialogue = "You recovered your health and mana!";
+			gp.player.life = gp.player.maxLife;
+			gp.player.mana = gp.player.maxMana;
 			gp.aSetter.setMonster();
 		}
 	}
