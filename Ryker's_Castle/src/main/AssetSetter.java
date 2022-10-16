@@ -10,6 +10,7 @@ import object.OBJ_Mshield;
 import object.OBJ_RKey;
 import object.OBJ_SpeedPotion;
 import object.OBJ_door;
+import tile_interactive.IT_BrTree;
 
 public class AssetSetter {
 	
@@ -68,5 +69,10 @@ public class AssetSetter {
 		gp.monster[i].worldX = gp.tileSize*25;
 		gp.monster[i].worldY = gp.tileSize*3;
 		i++;
+	}
+	public void setInteractiveTile() {
+		
+		int i = 0;
+		gp.iTile[i] = new IT_BrTree(gp,6,2);i++;
 	}
 }
