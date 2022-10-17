@@ -41,6 +41,7 @@ public class Entity {
 	public int spriteCounter=0;
 	public int actionLockCounter = 0;
 	public int invincibleCounter = 0;
+	public int shotAvailableCounter = 0;
 	int dyingCounter = 0;
 	int hpBarCounter = 0;
 
@@ -49,6 +50,9 @@ public class Entity {
 	public int speed;
 	public int maxLife;
 	public int life;
+	public int maxMana;
+	public int mana;
+	public int ammo;
 	public int level;
 	public int strength;
 	public int dexterity;
@@ -59,11 +63,14 @@ public class Entity {
 	public int coin;
 	public Entity currentWeapon;
 	public Entity currentShield;
+	public Projectile projectile;
 	
 	// Item Attributes
+	public int value;
 	public int attackValue;
 	public int defenseValue;
 	public String description = "";
+	public int useCost;
 	
 	//TYPES
 	public int type; // 0 = player, 1 = npc, 2 = monster;
@@ -74,6 +81,7 @@ public class Entity {
 	public final int type_axe = 4;
 	public final int type_shield= 5;
 	public final int type_consumable = 6;
+	public final int type_pickupOnly = 7;
 	
 	public Entity(GamePanel gp) {
 		this.gp = gp;
@@ -104,6 +112,53 @@ public class Entity {
 		}
 	}
 	public void use(Entity entity) {}	
+	public void checkDrop() {}
+	public void dropItem(Entity droppedItem) {
+		
+		for(int i = 0; i < gp.obj.length; i++) {
+			
+			if(gp.obj[i] == null) {
+				gp.obj[i] = droppedItem;
+				gp.obj[i].worldX = worldX;
+				gp.obj[i].worldY = worldY;
+				break;
+			}
+		}
+	}
+	public Color getParticleColor() {
+		
+		Color color = null;
+		return color;
+	}
+	public int getParticleSize() {
+		int size = 0;
+		return size;
+	}
+	public int getParticleSpeed() {
+		int speed = 0;
+		return speed;
+	}
+	public int getParticleMaxLife() {
+		int maxLife = 0;
+		return maxLife;
+	}
+	public void generateParticle(Entity generator,Entity target) {
+		
+		Color color = generator.getParticleColor();
+		int size = generator.getParticleSize();
+		int speed = generator.getParticleSpeed();
+		int maxLife = generator.getParticleMaxLife();
+		
+		Particle p1 = new Particle(gp, target, color, size, speed, maxLife, -2, -1);
+		Particle p2 = new Particle(gp, target, color, size, speed, maxLife, 2, -1);
+		Particle p3 = new Particle(gp, target, color, size, speed, maxLife, -2, 1);
+		Particle p4 = new Particle(gp, target, color, size, speed, maxLife, 2, 1);
+		gp.particleList.add(p1);
+		gp.particleList.add(p2);
+		gp.particleList.add(p3);
+		gp.particleList.add(p4);
+		
+	}
 	public void update() {
 		setAction();
 		
@@ -112,20 +167,12 @@ public class Entity {
 		gp.cChecker.checkObject(this, false);
 		gp.cChecker.checkEntity(this, gp.npc);
 		gp.cChecker.checkEntity(this, gp.monster);
+		gp.cChecker.checkEntity(this, gp.iTile);
 		boolean contactPlayer = gp.cChecker.checkPlayer(this);
 		
 		if(this.type == type_monster && contactPlayer == true) {
-			if(gp.player.invincible == false) {
-				gp.playSE(6);
-				
-				int damage = attack - gp.player.defense;
-				if(damage < 0) {
-					damage = 0;
-				}
-				gp.player.life -= damage;
-				
-				gp.player.invincible = true;
-			}
+			
+			damagePlayer(attack);
 		}
 		
 		if(collisionOn==false) {
@@ -154,6 +201,23 @@ public class Entity {
 				invincible =false;
 				invincibleCounter = 0;
 			}
+		}
+		if(shotAvailableCounter < 30) {
+			shotAvailableCounter++;
+		}
+	}
+	public void damagePlayer(int attack) {
+		
+		if(gp.player.invincible == false) {
+			gp.playSE(6);
+			
+			int damage = attack - gp.player.defense;
+			if(damage < 0) {
+				damage = 0;
+			}
+			gp.player.life -= damage;
+			
+			gp.player.invincible = true;
 		}
 	}
 	public void draw(Graphics2D g2) {
@@ -214,7 +278,7 @@ public class Entity {
 				dyingAnimation(g2);
 			}
 			
-			g2.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);
+			g2.drawImage(image,screenX,screenY,null);
 			
 			changeAlpha(g2,1f);
 		}
@@ -235,7 +299,6 @@ public class Entity {
 		if(dyingCounter > i*6 && dyingCounter <= i*7) { changeAlpha(g2,0f);}
 		if(dyingCounter > i*7 && dyingCounter <= i*8) { changeAlpha(g2,1f);}
 		if(dyingCounter > i*8) {
-			dying = false;
 			alive = false;
 		}
 	}

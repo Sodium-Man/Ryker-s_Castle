@@ -4,11 +4,13 @@ import entity.NPC_Ryker;
 import monster.MON_Crab;
 import object.OBJ_Axe;
 import object.OBJ_Chest;
+import object.OBJ_Coin_Bronze;
 import object.OBJ_Hpotion;
 import object.OBJ_Mshield;
 import object.OBJ_RKey;
 import object.OBJ_SpeedPotion;
 import object.OBJ_door;
+import tile_interactive.IT_BrTree;
 
 public class AssetSetter {
 	
@@ -24,7 +26,7 @@ public class AssetSetter {
 		gp.obj[i].worldX = gp.tileSize * 10;
 		gp.obj[i].worldY = gp.tileSize * 8;
 		i++;
-		gp.obj[i] = new OBJ_RKey(gp);
+		gp.obj[i] = new OBJ_Coin_Bronze(gp);
 		gp.obj[i].worldX = gp.tileSize * 9;
 		gp.obj[i].worldY = gp.tileSize * 7;
 		i++;
@@ -67,5 +69,10 @@ public class AssetSetter {
 		gp.monster[i].worldX = gp.tileSize*25;
 		gp.monster[i].worldY = gp.tileSize*3;
 		i++;
+	}
+	public void setInteractiveTile() {
+		
+		int i = 0;
+		gp.iTile[i] = new IT_BrTree(gp,6,2);i++;
 	}
 }

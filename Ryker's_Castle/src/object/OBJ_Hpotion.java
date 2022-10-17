@@ -6,7 +6,6 @@ import main.GamePanel;
 public class OBJ_Hpotion extends Entity{
 
 	GamePanel gp;
-	int value = 5;
 	
 	public OBJ_Hpotion(GamePanel gp) {
 		super(gp);
@@ -15,6 +14,7 @@ public class OBJ_Hpotion extends Entity{
 		
 		type = type_consumable;
 		name = "Health Potion";
+		value = 5;
 		down1 = setup("/objects/health_potion",gp.tileSize,gp.tileSize);
 		description = "[" + name + "]\nIncrease health by" + value + ".";
 	}
@@ -24,9 +24,6 @@ public class OBJ_Hpotion extends Entity{
 		gp.ui.currentDialogue = "You drank the "+ name + "!\n"
 				+"life recovered by "+value+".";
 		entity.life += value;
-		if(gp.player.life > gp.player.maxLife) {
-			gp.player.life = gp.player.maxLife;
-		}
 		gp.playSE(2);
 	}
 
