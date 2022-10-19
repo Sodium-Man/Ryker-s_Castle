@@ -1,19 +1,18 @@
 package main;
 import javax.swing.JFrame; 
 public class Main {
-	
-	public static JFrame window;
 
 	public static void main(String[] args) {
 		
-		window = new JFrame();
+		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
 		window.setTitle("Ryker's Castle");
-		window.setUndecorated(true);
 		
 		GamePanel gamepanel = new GamePanel();
 		window.add(gamepanel);
+		
+		gamepanel.config.loadConfig();
 		
 		window.pack();
 		

@@ -5,11 +5,15 @@ import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 public class Sound {
 	
 	Clip clip;
 	URL soundURL[] = new URL[40];
+	FloatControl fc;
+	int volumeScale = 3;
+	float volume;
 	
 	public Sound() {
 		
@@ -25,6 +29,7 @@ public class Sound {
 		soundURL[9]= getClass().getResource("/sound/cursor.wav");
 		soundURL[10]= getClass().getResource("/sound/burning.wav");
 		soundURL[11]= getClass().getResource("/sound/cuttree.wav");
+		soundURL[12]= getClass().getResource("/sound/gameover.wav");
 
 
 	}
@@ -35,6 +40,8 @@ public class Sound {
 			AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
 			clip = AudioSystem.getClip();
 			clip.open(ais);
+			fc = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+			checkVolume();
 			
 		}catch(Exception e) {
 			
@@ -55,6 +62,18 @@ public class Sound {
 		
 		clip.stop();
 		
+	}
+	public void checkVolume() {
+		
+		switch(volumeScale) {
+		case 0: volume = -80f; break;
+		case 1: volume = -20f;break;
+		case 2: volume = -12f;break;
+		case 3: volume = -5f;break;
+		case 4: volume = 1f;break;
+		case 5: volume = 6f;break;
+		}
+		fc.setValue(volume);
 	}
 
 }
