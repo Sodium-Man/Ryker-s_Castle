@@ -45,14 +45,14 @@ public class AssetSetter {
 	}
 	public void setNPC() {
 		
-		gp.npc[0] = new NPC_Ryker(gp);
+		/*gp.npc[0] = new NPC_Ryker(gp);
 		gp.npc[0].worldX = gp.tileSize*7;
-		gp.npc[0].worldY = gp.tileSize*8;
+		gp.npc[0].worldY = gp.tileSize*8;*/
 	}
 	public void setMonster() {
 		
 		int i = 0;
-		
+		/*
 		gp.monster[i] = new MON_Crab(gp);
 		gp.monster[i].worldX = gp.tileSize*21;
 		gp.monster[i].worldY = gp.tileSize*4;
@@ -68,11 +68,11 @@ public class AssetSetter {
 		gp.monster[i] = new MON_Crab(gp);
 		gp.monster[i].worldX = gp.tileSize*25;
 		gp.monster[i].worldY = gp.tileSize*3;
-		i++;
+		i++;*/
 	}
 	public void setInteractiveTile() {
 		
-		int i = 0;
-		gp.iTile[i] = new IT_BrTree(gp,6,2);i++;
+		/*int i = 0;
+		gp.iTile[i] = new IT_BrTree(gp,6,2);i++;*/
 	}
 }
