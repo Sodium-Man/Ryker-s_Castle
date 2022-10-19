@@ -15,16 +15,24 @@ public class TileManager {
 	
 	GamePanel gp;
 	public Tile[] tile;
-	public int mapTileNum[][];
+	public int mapTileNum[][][];
 	
 	public TileManager(GamePanel gp) {
 		
 		this.gp=gp;
 		tile=new Tile[200];
-		mapTileNum= new int[gp.maxWorldCol][gp.maxWorldRow];
+		mapTileNum= new int[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
 		
 		getTileImage();
-		loadMap("/maps/Village.txt");
+		loadMap("/maps/Village.txt",0);
+		loadMap("/maps/Interior First Floor.txt",1);
+		loadMap("/maps/Interior Second Floor.txt",2);
+		loadMap("/maps/Monster Map.txt",3);
+		loadMap("/maps/Mini Boss 1.txt",4);
+		loadMap("/maps/Mini Boss 2.txt",5);
+		loadMap("/maps/Mini Boss 3.txt",6);
+		loadMap("/maps/Ryker Map.txt",7);
+		
 	}
 	
 	public void getTileImage() {
@@ -152,26 +160,26 @@ public class TileManager {
 		setup(120, "grass_120", false);
 		setup(121, "big_white_flower_121", false);
 		setup(122, "close_portal_122", false);
-		setup(123, "water", false);
-		setup(124, "wall 124", false);
+		setup(123, "open_portal_123", false);
+		setup(124, "wall 124", true);
 		setup(125, "path 125", false);
-		setup(126, "full crack wall 126", false);
-		setup(127, "half crack wall 127", false);
-		setup(128, "wall 128", false);
+		setup(126, "full crack wall 126", true);
+		setup(127, "half crack wall 127", true);
+		setup(128, "wall 128", true);
 		setup(129, "path 129", false);
-		setup(130, "full crack wall 130", false);
-		setup(131, "half crack wall 131", false);
-		setup(132, "wall 132", false);
-		setup(133, "full crack wall 133", false);
-		setup(134, "half crack wall 134", false);
-		setup(135, "wall 135", false);
+		setup(130, "full crack wall 130", true);
+		setup(131, "half crack wall 131", true);
+		setup(132, "wall 132", true);
+		setup(133, "full crack wall 133", true);
+		setup(134, "half crack wall 134", true);
+		setup(135, "wall 135", true);
 		setup(136, "water", false);
 		setup(137, "statue bottom 137", true);
 		setup(138, "statue up 138", true);
 		setup(139, "floor 139", false);
 		setup(140, "bed 140", false);
-		setup(141, "bookshelf 141", false);
-		setup(142, "cupboard 142", false);
+		setup(141, "bookshelf 141", true);
+		setup(142, "cupboard 142", true);
 		setup(143, "top left carpet 143", false);
 		setup(144, "top right carpet 144", false);
 		setup(145, "bottom left carpet 145", false);
@@ -180,10 +188,10 @@ public class TileManager {
 		setup(148, "right carpet 148", false);
 		setup(149, "upper carpet 149", false);
 		setup(150, "bottom carpet 150", false);
-		setup(151, "wooden tv 151", false);
-		setup(152, "water", false);
-		setup(153, "wall down 153", false);
-		setup(154, "wall up 154", false);
+		setup(151, "middle carpet 151", false);
+		setup(152, "wooden tv 152", true);
+		setup(153, "wall down 153", true);
+		setup(154, "wall up 154", true);
 		setup(155, "water", false);
 		setup(156, "water", false);
 		setup(157, "water", false);
@@ -192,19 +200,19 @@ public class TileManager {
 		setup(160, "bottom mirror 160", false);
 		setup(161, "upper mirror 161", false);
 		setup(162, "green frame 162", false);
-		setup(163, "plant 163", false);
+		setup(163, "plant 163", true);
 		setup(164, "blue frame 164", false);
 		setup(165, "orange carpet 165", false);
 		setup(166, "stair 166", false);
 		setup(167, "blue carpet 167", false);
-		setup(168, "dinning left 168", false);
-		setup(169, "dinning right 169", false);
-		setup(170, "dinning middle 170", false);
-		setup(171, "right facing chair 171", false);
-		setup(172, "left facing chair 172", false);
-		setup(173, "stove left 173", false);
-		setup(174, "stove right 174", false);
-		setup(175, "stove middle 175", false);
+		setup(168, "dinning left 168", true);
+		setup(169, "dinning right 169", true);
+		setup(170, "dinning middle 170", true);
+		setup(171, "right facing chair 171", true);
+		setup(172, "left facing chair 172", true);
+		setup(173, "stove left 173", true);
+		setup(174, "stove right 174", true);
+		setup(175, "stove middle 175", true);
 		
 	}
 	public void setup(int index, String imageName, boolean collision) {
@@ -221,7 +229,7 @@ public class TileManager {
 			e.printStackTrace();
 		}
 	}
-	public void loadMap(String filePath) {
+	public void loadMap(String filePath,int map) {
 		try {
 			InputStream is =getClass().getResourceAsStream(filePath);
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -238,7 +246,7 @@ public class TileManager {
 					
 					int num = Integer.parseInt(numbers[col]);
 					
-					mapTileNum[col][row] = num;
+					mapTileNum[map][col][row] = num;
 					col++;	
 				}
 				if(col == gp.maxWorldCol) {
@@ -260,7 +268,7 @@ public class TileManager {
 		
 		while(worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
 			
-			int tileNum= mapTileNum[worldCol][worldRow];
+			int tileNum= mapTileNum[gp.currentMap][worldCol][worldRow];
 			
 			int worldX = worldCol *gp.tileSize;
 			int worldY = worldRow *gp.tileSize;
