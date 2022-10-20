@@ -68,7 +68,7 @@ public class EventHandler {
 			else if(hit(5,2,2,"any")==true) { teleport(6,2,47); }
 			else if(hit(6,2,47,"any")==true) { teleport(5,2,2); }
 			else if(hit(6,3,3,"any")==true) { teleport(7,24,46); }
-			else if(hit(7,24,46,"any")==true) { teleport(6,3,3); }
+			else if(hit(7,24,46,"any")==true) { teleport(0,16,34); }
 		}
 	}
 	

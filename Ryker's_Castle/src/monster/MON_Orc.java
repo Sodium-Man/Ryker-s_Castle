@@ -9,22 +9,22 @@ import object.OBJ_Heart;
 import object.OBJ_ManaCrystal;
 import object.OBJ_Rock;
 
-public class MON_GhostBoss extends Entity{
+public class MON_Orc extends Entity{
 	
 	GamePanel gp;
 
-	public MON_GhostBoss(GamePanel gp) {
+	public MON_Orc(GamePanel gp) {
 		super(gp);
 		
 		this.gp = gp;
 		
 		type = type_monster;
-		name = "crab";
+		name = "orc";
 		speed = 2;
-		maxLife = 50;
+		maxLife = 100;
 		life = maxLife;
 		attack = 4;
-		defense = 2;
+		defense = 5;
 		exp = 2;
 		projectile = new OBJ_Rock(gp);
 		
@@ -40,14 +40,14 @@ public class MON_GhostBoss extends Entity{
 	}
 	public void getImage() {
 		
-		up1 = setup("/monster/ghostB_up1",gp.tileSize,gp.tileSize);
-		up2 = setup("/monster/ghostB_up2",gp.tileSize,gp.tileSize);
-		down1 = setup("/monster/ghostB_down1",gp.tileSize,gp.tileSize);
-		down2 = setup("/monster/ghostB_down2",gp.tileSize,gp.tileSize);
-		left1 = setup("/monster/ghostB_left",gp.tileSize,gp.tileSize);
-		left2 = setup("/monster/ghostB_left",gp.tileSize,gp.tileSize);
-		right1 = setup("/monster/ghostB_right",gp.tileSize,gp.tileSize);
-		right2 = setup("/monster/ghostB_right",gp.tileSize,gp.tileSize);
+		up1 = setup("/monster/orc_up1",gp.tileSize,gp.tileSize);
+		up2 = setup("/monster/orc_up2",gp.tileSize,gp.tileSize);
+		down1 = setup("/monster/orc_down1",gp.tileSize,gp.tileSize);
+		down2 = setup("/monster/orc_down2",gp.tileSize,gp.tileSize);
+		left1 = setup("/monster/orc_left1",gp.tileSize,gp.tileSize);
+		left2 = setup("/monster/orc_left2",gp.tileSize,gp.tileSize);
+		right1 = setup("/monster/orc_right1",gp.tileSize,gp.tileSize);
+		right2 = setup("/monster/orc_right2",gp.tileSize,gp.tileSize);
 	}
 	public void setAction() {
 		

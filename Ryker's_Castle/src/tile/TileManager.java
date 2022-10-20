@@ -197,8 +197,8 @@ public class TileManager {
 		setup(157, "water", false);
 		setup(158, "water", false);
 		setup(159, "water", false);
-		setup(160, "bottom mirror 160", false);
-		setup(161, "upper mirror 161", false);
+		setup(160, "bottom mirror 160", true);
+		setup(161, "upper mirror 161", true);
 		setup(162, "green frame 162", false);
 		setup(163, "plant 163", true);
 		setup(164, "blue frame 164", false);

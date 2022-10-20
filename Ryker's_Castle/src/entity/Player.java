@@ -76,8 +76,9 @@ public class Player extends Entity{
 	}
 	public void setDefaultPositions() {
 		
-		worldX = gp.tileSize*26;
-		worldY = gp.tileSize*35;
+		gp.currentMap = 2;
+		worldX = gp.tileSize*19;
+		worldY = gp.tileSize*45;
 		direction="down";
 	}
 	public void restoreLifeAndMana() {
@@ -389,7 +390,7 @@ public class Player extends Entity{
 			
 			generateParticle(gp.iTile[gp.currentMap][i], gp.iTile[gp.currentMap][i]);
 			
-			if(gp.iTile[i][gp.currentMap].life == 0) {
+			if(gp.iTile[gp.currentMap][i].life == 0) {
 				gp.iTile[gp.currentMap][i] = gp.iTile[gp.currentMap][i].getDestroyedForm();
 			}
 		}
