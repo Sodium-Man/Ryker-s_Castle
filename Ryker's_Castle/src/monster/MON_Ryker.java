@@ -9,11 +9,11 @@ import object.OBJ_Heart;
 import object.OBJ_ManaCrystal;
 import object.OBJ_Rock;
 
-public class MON_GhostBoss extends Entity{
+public class MON_Ryker extends Entity{
 	
 	GamePanel gp;
 
-	public MON_GhostBoss(GamePanel gp) {
+	public MON_Ryker(GamePanel gp) {
 		super(gp);
 		
 		this.gp = gp;
@@ -40,14 +40,14 @@ public class MON_GhostBoss extends Entity{
 	}
 	public void getImage() {
 		
-		up1 = setup("/monster/ghostB_up1",gp.tileSize,gp.tileSize);
-		up2 = setup("/monster/ghostB_up2",gp.tileSize,gp.tileSize);
-		down1 = setup("/monster/ghostB_down1",gp.tileSize,gp.tileSize);
-		down2 = setup("/monster/ghostB_down2",gp.tileSize,gp.tileSize);
-		left1 = setup("/monster/ghostB_left1",gp.tileSize,gp.tileSize);
-		left2 = setup("/monster/ghostB_left2",gp.tileSize,gp.tileSize);
-		right1 = setup("/monster/ghostB_right1",gp.tileSize,gp.tileSize);
-		right2 = setup("/monster/ghostB_right2",gp.tileSize,gp.tileSize);
+		up1 = setup("/monster/ryker_up1",gp.tileSize,gp.tileSize);
+		up2 = setup("/monster/ryker_up2",gp.tileSize,gp.tileSize);
+		down1 = setup("/monster/ryker_down1",gp.tileSize,gp.tileSize);
+		down2 = setup("/monster/ryker_down2",gp.tileSize,gp.tileSize);
+		left1 = setup("/monster/ryker_left1",gp.tileSize,gp.tileSize);
+		left2 = setup("/monster/ryker_left2",gp.tileSize,gp.tileSize);
+		right1 = setup("/monster/ryker_right1",gp.tileSize,gp.tileSize);
+		right2 = setup("/monster/ryker_right2",gp.tileSize,gp.tileSize);
 	}
 	public void setAction() {
 		
