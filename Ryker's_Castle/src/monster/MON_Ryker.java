@@ -19,13 +19,13 @@ public class MON_Ryker extends Entity{
 		this.gp = gp;
 		
 		type = type_monster;
-		name = "crab";
+		name = "ryker";
 		speed = 2;
-		maxLife = 20;
+		maxLife = 150;
 		life = maxLife;
-		attack = 4;
-		defense = 0;
-		exp = 2;
+		attack = 5;
+		defense = 5;
+		exp = 10;
 		projectile = new OBJ_Rock(gp);
 		
 		solidArea.x = 8;

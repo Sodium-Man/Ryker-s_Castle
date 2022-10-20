@@ -21,10 +21,10 @@ public class MON_GhostBoss extends Entity{
 		type = type_monster;
 		name = "crab";
 		speed = 2;
-		maxLife = 20;
+		maxLife = 50;
 		life = maxLife;
 		attack = 4;
-		defense = 0;
+		defense = 2;
 		exp = 2;
 		projectile = new OBJ_Rock(gp);
 		
@@ -44,10 +44,10 @@ public class MON_GhostBoss extends Entity{
 		up2 = setup("/monster/ghostB_up2",gp.tileSize,gp.tileSize);
 		down1 = setup("/monster/ghostB_down1",gp.tileSize,gp.tileSize);
 		down2 = setup("/monster/ghostB_down2",gp.tileSize,gp.tileSize);
-		left1 = setup("/monster/ghostB_left1",gp.tileSize,gp.tileSize);
-		left2 = setup("/monster/ghostB_left2",gp.tileSize,gp.tileSize);
-		right1 = setup("/monster/ghostB_right1",gp.tileSize,gp.tileSize);
-		right2 = setup("/monster/ghostB_right2",gp.tileSize,gp.tileSize);
+		left1 = setup("/monster/ghostB_left",gp.tileSize,gp.tileSize);
+		left2 = setup("/monster/ghostB_left",gp.tileSize,gp.tileSize);
+		right1 = setup("/monster/ghostB_right",gp.tileSize,gp.tileSize);
+		right2 = setup("/monster/ghostB_right",gp.tileSize,gp.tileSize);
 	}
 	public void setAction() {
 		

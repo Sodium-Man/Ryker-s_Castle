@@ -19,12 +19,12 @@ public class MON_Orc extends Entity{
 		this.gp = gp;
 		
 		type = type_monster;
-		name = "crab";
+		name = "orc";
 		speed = 2;
-		maxLife = 20;
+		maxLife = 100;
 		life = maxLife;
 		attack = 4;
-		defense = 0;
+		defense = 5;
 		exp = 2;
 		projectile = new OBJ_Rock(gp);
 		

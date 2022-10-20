@@ -5,6 +5,7 @@ import java.util.Random;
 import entity.Entity;
 import main.GamePanel;
 import object.OBJ_Coin_Bronze;
+import object.OBJ_Fireball;
 import object.OBJ_Heart;
 import object.OBJ_ManaCrystal;
 import object.OBJ_Rock;
@@ -21,12 +22,12 @@ public class MON_Wiz extends Entity{
 		type = type_monster;
 		name = "crab";
 		speed = 2;
-		maxLife = 20;
+		maxLife = 50;
 		life = maxLife;
 		attack = 4;
-		defense = 0;
+		defense = 4;
 		exp = 2;
-		projectile = new OBJ_Rock(gp);
+		projectile = new OBJ_Fireball(gp);
 		
 		solidArea.x = 8;
 		solidArea.y = 16;
@@ -40,14 +41,14 @@ public class MON_Wiz extends Entity{
 	}
 	public void getImage() {
 		
-		up1 = setup("/monster/ryker_up1",gp.tileSize,gp.tileSize);
-		up2 = setup("/monster/ryker_up2",gp.tileSize,gp.tileSize);
-		down1 = setup("/monster/ryker_down1",gp.tileSize,gp.tileSize);
-		down2 = setup("/monster/ryker_down2",gp.tileSize,gp.tileSize);
-		left1 = setup("/monster/ryker_left1",gp.tileSize,gp.tileSize);
-		left2 = setup("/monster/ryker_left2",gp.tileSize,gp.tileSize);
-		right1 = setup("/monster/ryker_right1",gp.tileSize,gp.tileSize);
-		right2 = setup("/monster/ryker_right2",gp.tileSize,gp.tileSize);
+		up1 = setup("/monster/wizard_up1",gp.tileSize,gp.tileSize);
+		up2 = setup("/monster/wizard_up2",gp.tileSize,gp.tileSize);
+		down1 = setup("/monster/wizard_down1",gp.tileSize,gp.tileSize);
+		down2 = setup("/monster/wizard_down2",gp.tileSize,gp.tileSize);
+		left1 = setup("/monster/wizard_left",gp.tileSize,gp.tileSize);
+		left2 = setup("/monster/wizard_left",gp.tileSize,gp.tileSize);
+		right1 = setup("/monster/wizard_right",gp.tileSize,gp.tileSize);
+		right2 = setup("/monster/wizard_right",gp.tileSize,gp.tileSize);
 	}
 	public void setAction() {
 		
